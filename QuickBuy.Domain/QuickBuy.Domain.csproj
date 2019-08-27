@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contratos\" />
+    <Folder Include="ObjetosDeValor\" />
   </ItemGroup>
 
 </Project>

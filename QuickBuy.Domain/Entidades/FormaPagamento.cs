@@ -1,6 +1,8 @@
-﻿namespace QuickBuy.Domain.ObjetosDeValor
+﻿using QuickBuy.Domain.Entidades;
+
+namespace QuickBuy.Domain.Entidades
 {
-    public class FormaPagamento
+    public class FormaPagamento : Entidade
     {
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -20,6 +22,11 @@
         public bool NaoDefinido
         {
             get { return Id == (int)Enumerados.TipoFormaPagamentoEnum.NaoDefinido; }
+        }
+
+        public override void Validate()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
