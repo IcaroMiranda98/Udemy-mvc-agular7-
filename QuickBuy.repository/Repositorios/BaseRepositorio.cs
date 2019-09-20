@@ -21,11 +21,6 @@ namespace QuickBuy.repository.Repositorios
             throw new NotImplementedException();
         }
 
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
         public TEntity ObterPorId(int id)
         {
             throw new NotImplementedException();
@@ -37,6 +32,10 @@ namespace QuickBuy.repository.Repositorios
         }
 
         public void Remover(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+        public void Dispose()
         {
             throw new NotImplementedException();
         }
