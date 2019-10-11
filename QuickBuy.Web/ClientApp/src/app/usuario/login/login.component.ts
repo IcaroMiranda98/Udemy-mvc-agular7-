@@ -17,7 +17,7 @@ export class LoginComponent {
   }
 
   entrar() {
-    alert("Email: " + this.usuario.email + ", Senha: " + this.usuario.senha);
+    alert("teste");  
   }
 
 }
