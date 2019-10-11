@@ -1,7 +1,24 @@
-<h1>Counter</h1>
+<h1>Produtos</h1>
 
-<p>This is a simple example of an Angular component.</p>
+<p>Listas com os produtos cadastrados.</p>
 
-<p>Current count: <strong>{{ obterNome() }}</strong></p>
+<p *ngIf="!produtos"><em>Carregando...</em></p>
 
-<button class="btn btn-primary" (click)="incrementCounter()">Increment</button>
+<table class='table table-striped' *ngIf="produtos">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Preço</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let produto of produtos">
+      <td>{{ produto.id }}</td>
+      <td>{{ produto.nome }}</td>
+      <td>{{ produto.descricao }}</td>
+      <td>{{ produto.preco }}</td>
+    </tr>
+  </tbody>
+</table>

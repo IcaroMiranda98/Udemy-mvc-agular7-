@@ -42,7 +42,7 @@ namespace QuickBuy.repository.Repositorios
         }
         public void Dispose()
         {
-            throw new NotImplementedException();
+            QuickBuyContexto.Dispose();
         }
     }
 }
