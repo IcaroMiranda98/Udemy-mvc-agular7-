@@ -13,6 +13,7 @@ import { UsuarioServico } from "../../servicos/usuario/usuario.servico";
 export class LoginComponent implements OnInit {
     public usuario: Usuario;
     public returnUrl: string;
+    public mensagem: string;
 
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute,
@@ -27,11 +28,20 @@ export class LoginComponent implements OnInit {
     entrar() {
         this.usuarioservico.verificarUsuario(this.usuario)
             .subscribe(
-                data => {
-                    console.log(data);
+                usuario_json => {
+
+                    this.usuarioservico.usuario = usuario_json;
+
+                    /*sessionStorage.setItem("usuario_autenticado", "1");
+                    sessionStorage.setItem("email_usuario", this.usuario.email);*/
+
+                    if (this.returnUrl == null)
+                        this.returnUrl = "";
+
+                    this.router.navigate(['/' + this.returnUrl]);
                 },
                 err => {
-                    console.log(err.error);
+                    this.mensagem = err.error;
                 }
             );
 

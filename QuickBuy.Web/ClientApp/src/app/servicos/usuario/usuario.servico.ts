@@ -8,6 +8,18 @@ import { Usuario } from "../../modelo/Usuario";
 })
 export class UsuarioServico {
     private baseURL: string;
+    private _usuario: Usuario;
+
+    set usuario(usuario: Usuario) {
+        sessionStorage.setItem("usuario_autenticado", JSON.stringify(usuario));
+        this._usuario = usuario;
+    }
+
+    get usuario(): Usuario {
+        let usuario_json = sessionStorage.getItem("usuario_autenticado");
+        this._usuario = JSON.parse(usuario_json);
+        return this._usuario;
+    }
 
     constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
         this.baseURL = baseUrl;
