@@ -27,12 +27,13 @@ namespace QuickBuy.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString("QuickBuyDB");
+            var connectionString = Configuration.GetConnectionString("RemoteFreeSQL");
             services.AddDbContext<QuickBuyContexto>( option => option.UseLazyLoadingProxies()
-                                                               .UseSqlServer(connectionString, m => m.MigrationsAssembly( "QuickBuy.repository" )) );
+                                                               .UseMySql(connectionString, m => m.MigrationsAssembly( "QuickBuy.repository" )) );
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
+            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

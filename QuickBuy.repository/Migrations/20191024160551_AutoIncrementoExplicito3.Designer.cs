@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuickBuy.repository.Contexto;
 
 namespace QuickBuy.repository.Migrations
 {
     [DbContext(typeof(QuickBuyContexto))]
-    partial class QuickBuyContextoModelSnapshot : ModelSnapshot
+    [Migration("20191024160551_AutoIncrementoExplicito3")]
+    partial class AutoIncrementoExplicito3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
