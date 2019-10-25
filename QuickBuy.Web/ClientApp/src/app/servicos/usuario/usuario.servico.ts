@@ -25,7 +25,7 @@ export class UsuarioServico {
         this.baseURL = baseUrl;
     }
 
-    public verificarUsuario(usuario: Usuario): Observable<Usuario> {
+    public validarLogin(usuario: Usuario): Observable<Usuario> {
         const headers = new HttpHeaders().set('content-type', 'application/json');
 
         var body = {
@@ -33,6 +33,15 @@ export class UsuarioServico {
             senha: usuario.senha
         };
 
-        return this.http.post<Usuario>(this.baseURL + "api/usuario/VerificarUsuario", body, { headers });
+        return this.http.post<Usuario>(this.baseURL + "api/usuario/ValidarLogin", body, { headers });
+    }
+
+    public sair(){
+        sessionStorage.setItem("usuario_autenticado", "");
+        this._usuario = null;
+    }
+
+    public usuarioLogado():boolean{
+      return this._usuario != null;
     }
 }

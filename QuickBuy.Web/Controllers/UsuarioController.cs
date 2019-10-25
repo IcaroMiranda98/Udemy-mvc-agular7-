@@ -15,7 +15,7 @@ namespace QuickBuy.Web.Controllers
         {
             _usuarioRepositorio = usuarioRepositorio;
         }
-        [HttpPost("VerificarUsuario")]
+        [HttpPost("ValidarLogin")]
         public ActionResult VerificarUsuario([FromBody] Usuario usuario)
         {
             try

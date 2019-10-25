@@ -21,12 +21,11 @@ export class NavMenuComponent {
   }
 
   usuarioLogado(): boolean {
-      
-      return sessionStorage.getItem("usuario_autenticado") == "1";
+      return this.usuarioServico.usuarioLogado();
   }
 
   sair() {
-      sessionStorage.setItem("usuario_autenticado", "");
+      this.usuarioServico.sair();
       this.router.navigate(["/"]);
   }
 

@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
     public usuario: Usuario;
     public returnUrl: string;
     public mensagem: string;
+    public logando: boolean;
 
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute,
@@ -26,14 +27,12 @@ export class LoginComponent implements OnInit {
     }
 
     entrar() {
-        this.usuarioservico.verificarUsuario(this.usuario)
+        this.logando = true;
+        this.usuarioservico.validarLogin(this.usuario)
             .subscribe(
                 usuario_json => {
 
                     this.usuarioservico.usuario = usuario_json;
-
-                    /*sessionStorage.setItem("usuario_autenticado", "1");
-                    sessionStorage.setItem("email_usuario", this.usuario.email);*/
 
                     if (this.returnUrl == null)
                         this.returnUrl = "";
@@ -42,17 +41,9 @@ export class LoginComponent implements OnInit {
                 },
                 err => {
                     this.mensagem = err.error;
+                    this.logando = false;
                 }
             );
-
-        /*if (this.usuario.email == "icaro@gmail.com" && this.usuario.senha == "123456") {
-            sessionStorage.setItem("usuario_autenticado", "1");
-
-            if (this.returnUrl == null)
-                this.returnUrl = "";
-            
-            this.router.navigate(['/' + this.returnUrl ]);
-        }*/
     }
     
     sair() {
