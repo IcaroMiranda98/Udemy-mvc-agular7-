@@ -4,11 +4,11 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-produtocadastro-component',
-    templateUrl: './produto.component.html'
+    templateUrl: './cadastro.produto.component.html'
 })
-export class ProdutoCadastroComponent {
+export class CadastroProdutoComponent {
  
-  public produtos: Produto[];
+  public produtos: Produto[]; 
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
 
@@ -16,9 +16,5 @@ export class ProdutoCadastroComponent {
       this.produtos = result;
     }, error => console.error(error));
   }
-
-    public obterNome() {
-        return "Samsung";
-    }
  
 }
