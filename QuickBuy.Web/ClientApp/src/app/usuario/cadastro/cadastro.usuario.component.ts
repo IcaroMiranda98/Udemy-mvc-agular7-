@@ -14,11 +14,18 @@ export class CadastroUsuarioComponent implements OnInit {
 
     public usuario: Usuario;
 
+    constructor(private usuarioServico: UsuarioServico, private router: Router){
+
+    }
+
     ngOnInit(): void {
         this.usuario = new Usuario();
     }
 
     cadastrar() {
+      if (this.usuarioServico.cadastrarUsuario(this.usuario)) {
+        this.router.navigate(['/' );
+      }
         alert("Email: " + this.usuario.email + " Nome: " + this.usuario.nome + " " + this.usuario.sobreNome);
     }
 

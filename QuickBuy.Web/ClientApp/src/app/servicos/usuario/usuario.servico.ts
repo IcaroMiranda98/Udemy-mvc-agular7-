@@ -36,12 +36,24 @@ export class UsuarioServico {
         return this.http.post<Usuario>(this.baseURL + "api/usuario/ValidarLogin", body, { headers });
     }
 
+    public cadastrarUsuario(usuario: Usuario): boolean {
+
+        const headers = new HttpHeaders().set('content-type', 'application/json');
+        this.http.post<Usuario>(this.baseURL + "api/usuario", JSON.stringify(usuario), { headers })
+          .subscribe(novoUsuario => {
+            if (novoUsuario.id != null) {
+              this.usuario = novoUsuario;
+
+            }
+          });
+    }
+
     public sair(){
         sessionStorage.setItem("usuario_autenticado", "");
         this._usuario = null;
     }
 
     public usuarioLogado():boolean{
-      return this._usuario != null;
+      return this._usuario != null; 
     }
 }
