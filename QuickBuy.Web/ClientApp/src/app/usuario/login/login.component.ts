@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
             );
     }
     
-    sair() {
+    public sair() { 
         sessionStorage.setItem("usuario_autenticado", "");
     }
 

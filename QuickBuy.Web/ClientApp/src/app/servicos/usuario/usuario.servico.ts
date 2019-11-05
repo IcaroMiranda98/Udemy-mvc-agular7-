@@ -42,13 +42,15 @@ export class UsuarioServico {
         this.http.post<Usuario>(this.baseURL + "api/usuario", JSON.stringify(usuario), { headers })
           .subscribe(novoUsuario => {
             if (novoUsuario.id != null) {
-              this.usuario = novoUsuario;
-
+                this.usuario = novoUsuario;
             }
           });
+
+        if (this.usuario.id != null)
+            return true;
     }
 
-    public sair(){
+    public sair(): void{
         sessionStorage.setItem("usuario_autenticado", "");
         this._usuario = null;
     }

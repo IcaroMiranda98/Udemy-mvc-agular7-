@@ -42,6 +42,6 @@ export class ProdutoServico implements OnInit {
       return this._http.post<Produto>(this.baseURL + "api/Produto", JSON.stringify(produto), { headers: this.headers });
 
     }
-
+     
 }
 
