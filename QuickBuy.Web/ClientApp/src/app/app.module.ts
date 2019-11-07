@@ -15,6 +15,7 @@ import { GuardaRotas } from './autorizacao/guarda.rotas';
 import { UsuarioServico } from './servicos/usuario/usuario.servico';
 import { CadastroProdutoComponent } from './produto/cadastro/cadastro.produto.component';
 import { CadastroUsuarioComponent } from './usuario/cadastro/cadastro.usuario.component';
+import { ProdutoServico } from './servicos/produto/produto.servico';
 
 @NgModule({
   declarations: [
@@ -36,13 +37,13 @@ import { CadastroUsuarioComponent } from './usuario/cadastro/cadastro.usuario.co
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'produto', component: ProdutoComponent/*, canActivate: [GuardaRotas] */},
-      { path: 'novo-produto', component: CadastroProdutoComponent/*, canActivate: [GuardaRotas] */},
+      { path: 'produto', component: ProdutoComponent, canActivate: [GuardaRotas] },
+      { path: 'novo-produto', component: CadastroProdutoComponent, canActivate: [GuardaRotas] },
       { path: 'entrar', component: LoginComponent },
       { path: 'novo-usuario', component: CadastroUsuarioComponent },
     ])
   ],
-  providers: [UsuarioServico],
+  providers: [UsuarioServico, ProdutoServico],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

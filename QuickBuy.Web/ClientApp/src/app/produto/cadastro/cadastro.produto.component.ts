@@ -34,24 +34,10 @@ export class CadastroProdutoComponent implements OnInit {
             return;
         }
 
-        this.produtoServico.cadastarProduto(this.produto);
+        this.produtoServico.cadastarProduto(this.produto).subscribe();
 
         this.router.navigate(['/produto']) 
-
-        alert("Nome: " + this.produto.nome + " Descrição: " + this.produto.descricao + " Preço:" + this.produto.preco);
         this.processando = false;
     }
-
-
-  /*constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-
-    http.get<Produto[]>(baseUrl + 'api/Produto').subscribe(result => {
-      this.produtos = result;
-    }, error => console.error(error));
-    }*/
-
-
-
-
  
 }

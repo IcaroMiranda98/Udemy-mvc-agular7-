@@ -23,10 +23,10 @@ export class CadastroUsuarioComponent implements OnInit {
     }
 
     cadastrar(): void {
-        /*
+        
       if (this.usuarioServico.cadastrarUsuario(this.usuario)) {
         this.router.navigate(['/'] );
-      }*/
+      }
         alert("Email: " + this.usuario.email + " Nome: " + this.usuario.nome + " " + this.usuario.sobreNome);
     }
 

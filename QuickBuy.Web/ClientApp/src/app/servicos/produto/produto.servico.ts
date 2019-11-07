@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpBackend } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Produto } from "../../modelo/Produto";
 import { Options } from "selenium-webdriver/edge";
+import { Usuario } from "../../modelo/Usuario";
 
 @Injectable({
     providedIn: "root"
@@ -10,10 +11,11 @@ import { Options } from "selenium-webdriver/edge";
 export class ProdutoServico implements OnInit {
 
     public produtos: Produto[];
+    public produto: Observable<Produto>;
     public baseURL: string;
     private readonly _http: HttpClient;
 
-    constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+    constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
       this.baseURL = baseUrl;
       this._http = http;
     }
@@ -37,9 +39,10 @@ export class ProdutoServico implements OnInit {
     }
 
     public cadastarProduto(produto: Produto): Observable<Produto> {
-      const headers = new HttpHeaders().set('content-type', 'application/json');
 
-      return this._http.post<Produto>(this.baseURL + "api/Produto", JSON.stringify(produto), { headers: this.headers });
+        this.produto = this.http.post<Produto>(this.baseURL + "api/produto", JSON.stringify(produto), { headers: this.headers });
+        this.produto.subscribe();
+        return this.produto;
 
     }
      
