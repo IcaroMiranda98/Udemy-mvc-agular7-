@@ -13,6 +13,7 @@ import { UsuarioServico } from "../../servicos/usuario/usuario.servico";
 export class CadastroUsuarioComponent implements OnInit {
 
     public usuario: Usuario;
+    public mensagem: string;
 
     constructor(private usuarioServico: UsuarioServico, private router: Router){
 
@@ -20,14 +21,16 @@ export class CadastroUsuarioComponent implements OnInit {
 
     ngOnInit(): void {
         this.usuario = new Usuario();
-    }
+    } 
 
     cadastrar(): void {
         
       if (this.usuarioServico.cadastrarUsuario(this.usuario)) {
-        this.router.navigate(['/'] );
+          this.router.navigate(['/']);
+      } else {
+          this.mensagem = this.usuarioServico.mensagem;
       }
-        alert("Email: " + this.usuario.email + " Nome: " + this.usuario.nome + " " + this.usuario.sobreNome);
+        //alert("Email: " + this.usuario.email + " Nome: " + this.usuario.nome + " " + this.usuario.sobreNome);
     }
 
 }

@@ -8,5 +8,6 @@ namespace QuickBuy.Domain.Contratos
     public interface IUsuarioRepositorio : IBaseRepositorio<Usuario>
     {
         Usuario ValidarLogin(Usuario usuario);
+        Usuario ValidarCadastro(Usuario usuario);
     }
 }

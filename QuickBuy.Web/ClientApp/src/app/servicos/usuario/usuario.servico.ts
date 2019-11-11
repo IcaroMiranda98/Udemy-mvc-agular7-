@@ -9,6 +9,7 @@ import { Usuario } from "../../modelo/Usuario";
 export class UsuarioServico {
     private baseURL: string;
     private _usuario: Usuario;
+    public mensagem: string;
 
     set usuario(usuario: Usuario) {
         sessionStorage.setItem("usuario_autenticado", JSON.stringify(usuario));
@@ -42,12 +43,17 @@ export class UsuarioServico {
         this.http.post<Usuario>(this.baseURL + "api/usuario", JSON.stringify(usuario), { headers })
           .subscribe(novoUsuario => {
             if (novoUsuario.id != null) {
+
                 this.usuario = novoUsuario;
+                return true;
             }
+          },
+          e => {
+              this.mensagem = e.error;
           });
 
-        if (this.usuario.id != null)
-            return true;
+        return false;
+
     }
 
     public sair(): void{

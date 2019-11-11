@@ -39,6 +39,11 @@ namespace QuickBuy.Web.Controllers
         {
             try
             {
+                var validarCadastro = _usuarioRepositorio.ValidarCadastro(usuario);
+
+                if (validarCadastro != null)
+                    return BadRequest("Usuário já cadastrado.");
+                    
                 _usuarioRepositorio.Adicionar(usuario);
                 return Created("api/usuario", usuario);
                

@@ -25,5 +25,11 @@ namespace QuickBuy.repository.Repositorios
 
 
         }
+
+        public Usuario ValidarCadastro(Usuario usuario)
+        {
+            return QuickBuyContexto.Usuarios.FirstOrDefault(usuarioRetorno => usuarioRetorno.Email == usuario.Email);
+
+        }
     }
 }
