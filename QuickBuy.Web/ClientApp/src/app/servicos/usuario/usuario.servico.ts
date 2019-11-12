@@ -37,22 +37,11 @@ export class UsuarioServico {
         return this.http.post<Usuario>(this.baseURL + "api/usuario/ValidarLogin", body, { headers });
     }
 
-    public cadastrarUsuario(usuario: Usuario): boolean {
+    public cadastrarUsuario(usuario: Usuario): Observable<Usuario> {
 
         const headers = new HttpHeaders().set('content-type', 'application/json');
-        this.http.post<Usuario>(this.baseURL + "api/usuario", JSON.stringify(usuario), { headers })
-          .subscribe(novoUsuario => {
-            if (novoUsuario.id != null) {
-
-                this.usuario = novoUsuario;
-                return true;
-            }
-          },
-          e => {
-              this.mensagem = e.error;
-          });
-
-        return false;
+        return this.http.post<Usuario>(this.baseURL + "api/usuario", JSON.stringify(usuario), { headers });
+        
 
     }
 
