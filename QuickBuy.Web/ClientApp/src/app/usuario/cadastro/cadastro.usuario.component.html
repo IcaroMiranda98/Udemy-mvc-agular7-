@@ -61,7 +61,7 @@
         Nome é de preenchimento obrigatório.
       </div>
     </div>
-    
+
     <label for="inputSobreNome" class="sr-only">Sobrenome</label>
     <input type="text" id="inputSobreNome"
            name="sobreNome" placeholder="Sobrenome"
@@ -73,20 +73,24 @@
            }"
            #sobreNome="ngModel"
            required />
- 
+
     <div class="invalid-feedback mb-2" *ngIf="sobreNome.invalid && (sobreNome.dirty || sobreNome.touched)">
       <div *ngIf="sobreNome.errors.required">
         Nome é de preenchimento obrigatório.
       </div>
-    </div> 
+    </div>
 
     <button class="btn btn-primary btn-block mb-3" type="submit" (click)="cadastrar()">
       <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativarSpinner"></span>
       Cadastrar
     </button>
 
-    <div class="alert alert-danger" *ngIf="mensagem != null">
+    <div class="alert alert-danger" *ngIf="mensagem != null && mensagem != 'Usuário cadastrado com sucesso.'">
       {{mensagem}}
+    </div>
+
+    <div class="alert alert-success" *ngIf="mensagem == 'Usuário cadastrado com sucesso.'">
+      {{mensagem}} <a [routerLink]='["/entrar"]'>Clique aqui para entrar.</a>
     </div>
 
     <div>

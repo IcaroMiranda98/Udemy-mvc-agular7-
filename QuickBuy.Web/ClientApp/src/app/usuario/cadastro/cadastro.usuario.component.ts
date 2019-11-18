@@ -34,8 +34,8 @@ export class CadastroUsuarioComponent implements OnInit {
           .subscribe(novoUsuario => {
             if (novoUsuario.id != null) {
 
-              this.usuario = novoUsuario;
-              this.mensagem = "Usuário cadastrado com suceso."
+              //this.usuario = novoUsuario;
+              this.mensagem = "Usuário cadastrado com sucesso."
               this.ativarSpinner = false;
             }
           },
@@ -43,8 +43,6 @@ export class CadastroUsuarioComponent implements OnInit {
               this.mensagem = e.error;
               this.ativarSpinner = false;
           })
-
-      //alert("Email: " + this.usuario.email + " Nome: " + this.usuario.nome + " " + this.usuario.sobreNome);
     }
 
 }
